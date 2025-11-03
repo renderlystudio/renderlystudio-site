@@ -1,0 +1,64 @@
+// Minimal JS: filtros, modal y year dinámico
+document.addEventListener('DOMContentLoaded', () => {
+  // year footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // filtros
+  const filterBtns = Array.from(document.querySelectorAll('.filter-btn'));
+  const cards = Array.from(document.querySelectorAll('.card'));
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(c => {
+        if (f === '*' || c.dataset.category === f) {
+          c.style.display = '';
+        } else {
+          c.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // modal/lightbox
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modal-img');
+  const modalTitle = document.getElementById('modal-title');
+  const modalDesc = document.getElementById('modal-desc');
+  const modalDownload = document.getElementById('modal-download');
+  const closeBtn = document.getElementById('modal-close');
+
+  // Sample data map (extiende con tus datos reales o carga desde JSON)
+  const ASSETS = {
+    "1": { title: "Prop 1", desc: "Low-poly prop listo para escena; formato: obj, fbx", img: "https://via.placeholder.com/1200x800?text=Prop+1", download:"#"},
+    "2": { title: "Texture 1", desc: "Texture 4K PBR seamless; canales: albedo, rough, normal", img: "https://via.placeholder.com/1200x800?text=Texture+1", download:"#"}
+  };
+
+  document.querySelectorAll('.card-thumb, .btn-preview').forEach(el => {
+    el.addEventListener('click', (e) => {
+      const id = el.dataset.id;
+      const data = ASSETS[id];
+      if (!data) return;
+      modalImg.src = data.img;
+      modalTitle.textContent = data.title;
+      modalDesc.textContent = data.desc;
+      modalDownload.href = data.download;
+      modalDownload.removeAttribute('aria-disabled');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  });
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+  });
+});

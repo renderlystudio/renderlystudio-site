@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nombre Estudio — Assets 3D</title>
+  <meta name="description" content="Assets 3D: props, texturas, materiales, shaders y tools." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1>NombreEstudio</h1>
+        <p class="tag">Assets 3D · Texturas · Shaders · Tools</p>
+      </div>
+      <nav class="nav">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#about">Sobre</a>
+        <a href="#contact">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h2>Assets 3D minimalistas y de alta calidad</h2>
+          <p>Props, texturas, materiales y shaders listos para tus proyectos. Descarga hoy o guarda en tu lista.</p>
+          <a class="cta" href="#catalogo">Explorar catálogo</a>
+        </div>
+        <div class="hero-art">
+          <svg viewBox="0 0 400 300" class="hero-shape" aria-hidden="true">
+            <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#111" stop-opacity="0.08"/><stop offset="1" stop-color="#000" stop-opacity="0.02"/></linearGradient></defs>
+            <rect x="0" y="0" width="100%" height="100%" rx="20" fill="url(#g)"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalogo" class="catalog container">
+      <div class="catalog-header">
+        <h3>Catálogo</h3>
+        <div class="filters">
+          <button class="filter-btn active" data-filter="*">Todos</button>
+          <button class="filter-btn" data-filter="props">Props</button>
+          <button class="filter-btn" data-filter="textures">Texturas</button>
+          <button class="filter-btn" data-filter="materials">Materiales</button>
+          <button class="filter-btn" data-filter="shaders">Shaders</button>
+          <button class="filter-btn" data-filter="tools">Tools</button>
+        </div>
+      </div>
+
+      <div id="grid" class="grid">
+        <!-- Ejemplo de card; duplica y adapta para más assets -->
+        <article class="card" data-category="props">
+          <button class="card-thumb" data-id="1" aria-label="Abrir preview">
+            <img src="https://via.placeholder.com/600x400?text=Prop+1" alt="Prop 1 preview">
+          </button>
+          <div class="card-body">
+            <h4 class="card-title">Prop 1</h4>
+            <p class="card-meta">Low-poly prop · 12 mb</p>
+            <div class="card-actions">
+              <button class="btn-outline btn-preview" data-id="1">Vista</button>
+              <a class="btn-ghost" href="#" aria-disabled="true">Descargar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-category="textures">
+          <button class="card-thumb" data-id="2" aria-label="Abrir preview">
+            <img src="https://via.placeholder.com/600x400?text=Texture+1" alt="Texture 1 preview">
+          </button>
+          <div class="card-body">
+            <h4 class="card-title">Texture 1</h4>
+            <p class="card-meta">4K seamless · PBR</p>
+            <div class="card-actions">
+              <button class="btn-outline btn-preview" data-id="2">Vista</button>
+              <a class="btn-ghost" href="#" aria-disabled="true">Descargar</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Añade más cards aquí -->
+      </div>
+    </section>
+
+    <section id="about" class="about container">
+      <h3>Sobre</h3>
+      <p>Somos un estudio dedicado a crear assets 3D optimizados y estéticos. Trabajamos con PBR, texturizado procedimental y herramientas para acelerar tu flujo de trabajo.</p>
+    </section>
+
+    <section id="contact" class="contact container">
+      <h3>Contacto</h3>
+      <p class="muted">¿Interesado en comisiones o packs personalizados? Escríbenos.</p>
+      <form class="contact-form" action="#" onsubmit="event.preventDefault(); alert('Formulario de contacto: implementa envío');">
+        <input type="text" name="name" placeholder="Nombre" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" rows="4" placeholder="Mensaje"></textarea>
+        <button class="btn-primary" type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> NombreEstudio</div>
+      <div class="socials">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="ArtStation">Art</a>
+        <a href="#" aria-label="GitHub">GH</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal lightbox -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button id="modal-close" class="modal-close" aria-label="Cerrar">✕</button>
+      <img id="modal-img" src="" alt="">
+      <div class="modal-meta">
+        <h4 id="modal-title">Título</h4>
+        <p id="modal-desc">Descripción breve del asset.</p>
+        <div class="modal-actions">
+          <a id="modal-download" class="btn-ghost" href="#" aria-disabled="true">Descargar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
